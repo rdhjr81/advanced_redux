@@ -1,17 +1,15 @@
-import { Provider } from "@reactjs/toolkit";
+import { useSelector } from "react-redux";
 import Cart from "./components/Cart/Cart";
 import Layout from "./components/Layout/Layout";
 import Products from "./components/Shop/Products";
-import store from "./store";
 
 function App() {
+    const displayCart = useSelector(state => state.displayCart);
   return (
-    <Provider store={store}>
       <Layout>
-        <Cart />
+        {displayCart && <Cart />}
         <Products />
       </Layout>
-    </Provider>
   );
 }
 
