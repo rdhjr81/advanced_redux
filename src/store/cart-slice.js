@@ -40,7 +40,7 @@ const cartSlice = createSlice({
                 const cartItem = state.cartItems[index];
                 if(cartItem.id === itemId){
                     if(cartItem.quantity <= 1){
-                        state.cartItems.splice(index,1);
+                        state.cartItems = state.cartItems.filter(cartItem => cartItem.id != itemId);
                         break;
                     }else{
                         cartItem.quantity -=1;
