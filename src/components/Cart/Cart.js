@@ -10,9 +10,7 @@ const Cart = (props) => {
       <h2>Your Shopping Cart</h2>
       <ul>
         {
-          cartItems.map(cartItem => <CartItem key={cartItem.id}
-            item={cartItem}
-          />)
+          cartItems.map(cartItem => <CartItem key={cartItem.id} item={cartItem} />)
         }
       </ul>
     </Card>
