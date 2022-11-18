@@ -7,7 +7,8 @@ const initialCartState = {
       { id: 2, title: "Leather Boots", price: 12,description:'Now 10% less smelly!'},
       { id: 3, title: "Rain Jacket", price: 10,description:'Who\'s soaked? Not you!'},
       { id: 4, title: "Wool Slippers", price: 20, description:'Unparalleled warmth'},
-  ],
+    ],
+    changed: false
   };
 
 const cartSlice = createSlice({
@@ -32,6 +33,7 @@ const cartSlice = createSlice({
                 }
                 state.cartItems.push(newCartItem);
             }
+            state.changed = true;
         },
         removeItemFromCart(state, action){
             const itemId = action.payload;
@@ -46,6 +48,7 @@ const cartSlice = createSlice({
                         cartItem.quantity -=1;
                         cartItem.total -=item.price;
                     }
+                    state.changed = true;
                 }
             }
         },

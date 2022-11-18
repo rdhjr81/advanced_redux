@@ -12,6 +12,7 @@ function App() {
   const dispatch = useDispatch();
   const cartIsVisible = useSelector((state) => state.ui.cartIsVisible);
   const cartItems = useSelector((state) => state.cart.cartItems);
+  const cartChanged = useSelector((state) => state.cart.changed);
   const notificationStatus = useSelector(
     (state) => state.ui.notificationStatus
   );
@@ -23,8 +24,10 @@ function App() {
       isInitial = false;
       return;
     }
-    dispatch(sendCartData(cartItems));
-  }, [cartItems, dispatch]);
+    if(cartChanged){
+      dispatch(sendCartData(cartItems));
+    }
+  }, [cartItems, cartChanged, dispatch]);
 
   return (
     <Fragment>
